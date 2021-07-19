@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use App\Models\Roster;
 class PlayerTotals extends Model
 {
     use HasFactory;
@@ -32,7 +32,8 @@ class PlayerTotals extends Model
 		'personal_fouls'
     ];
 
-    public function roster(){
-    	return $this->belongsTo('App\Models\Roster', 'player_id');
+     public function roster($playerId){
+        return Roster::where('id', $playerId)->first();
     }
+
 }

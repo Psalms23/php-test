@@ -14,6 +14,6 @@ class Team extends Model
     protected $fillable = ['code', 'name'];
 
     public function roster(){
-    	return $this->hasMany('App\Models\Roster', 'team_code');
+    	return $this->hasMany('App\Models\Roster', 'team_code', 'code');
     }
 }
