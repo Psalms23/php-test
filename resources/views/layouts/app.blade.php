@@ -54,6 +54,8 @@
     
     @stack('scripts')
 
+    @stack('modals')
+
     @include('layouts.navbars.fixed-plugin-js')
 </body>
 

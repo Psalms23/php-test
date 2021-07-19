@@ -14,16 +14,9 @@
                                 <h4 class="card-title"> Export Query </h4>
                             </div>
                            <div class="col-md-4">
-                                <form class="pull-left">
-                                    <div class="input-group no-border">
-                                        <input type="text" value="" class="form-control" placeholder="Search...">
-                                        <div class="input-group-append">
-                                            <div class="input-group-text">
-                                                <i class="nc-icon nc-zoom-split"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
+                                <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#exportModal">
+                                  Search
+                                </button>
                            </div>
                             
                         </div>
@@ -36,7 +29,7 @@
                                         <th>Name</th>
                                         <th>Age</th>
                                         <th>Games</th>
-                                        <th>Games Started</th>
+                                        <th>Games exarted</th>
                                         <th>Minutes Played</th>
                                         <th>Field Goals</th>
                                         <th>Field Goals Attempted</th>
@@ -48,8 +41,8 @@
                                         <th>Free Throws Attempted</th>
                                         <th>Offensive Rebounds</th>
                                         <th>Defensive Rebounds</th>
-                                        <th>Assists</th>
-                                        <th>Steals</th>
+                                        <th>Assiexs</th>
+                                        <th>exeals</th>
                                         <th>Blocks</th>
                                         <th>Turnovers</th>
                                         <th>Personal Fouls</th>
@@ -62,34 +55,34 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($stats as $st)
+                                    @foreach($exports as $ex)
                                     <tr>
-                                        <td>{{ $st->roster($st->player_id)->name }}</td>
-                                        <td>{{ $st->age }}</td>
-                                        <td>{{ $st->games }}</td>
-                                        <td>{{ $st->games_started }}</td>
-                                        <td>{{ $st->minutes_played }}</td>
-                                        <td>{{ $st->field_goals }}</td>
-                                        <td>{{ $st->field_goals_attempted }}</td>
-                                        <td>{{ $st->{'3pt'} }}</td>
-                                        <td>{{ $st->{'3pt_attempted'} }}</td>
-                                        <td>{{ $st->{'2pt'} }}</td>
-                                        <td>{{ $st->{'2pt_attempted'} }}</td>
-                                        <td>{{ $st->free_throws }}</td>
-                                        <td>{{ $st->free_throws_attempted }}</td>
-                                        <td>{{ $st->offensive_rebounds }}</td>
-                                        <td>{{ $st->defensive_rebounds }}</td>
-                                        <td>{{ $st->assists }}</td>
-                                        <td>{{ $st->steals }}</td>
-                                        <td>{{ $st->blocks }}</td>
-                                        <td>{{ $st->turn_overs }}</td>
-                                        <td>{{ $st->personal_fouls }}</td>
-                                        <td>{{ $st->{'2pt'} + $st->{'3pt'} + $st->free_throws }}</td>
-                                        <td>{{ ($st->field_goals * 100) / $st->field_goals_attempted }}</td>
-                                        <td>{{ ($st->{'3pt'} != 0 ) ? ($st->{'3pt'} * 100) / $st->{'3pt_attempted'} : 0 }}</td>
-                                        <td>{{ ($st->{'2pt'} != 0 ) ? ($st->{'2pt'} * 100) / $st->{'2pt_attempted'} : 0 }}</td>
-                                        <td>{{ ($st->free_throws != 0) ? ($st->free_throws * 100) / $st->free_throws_attempted : 0 }}</td>
-                                        <td>{{ $st->defensive_rebounds + $st->offensive_rebound }}</td>
+                                        <td>{{ $ex->player_name }}</td>
+                                        <td>{{ $ex->age }}</td>
+                                        <td>{{ $ex->games }}</td>
+                                        <td>{{ $ex->games_started }}</td>
+                                        <td>{{ $ex->minutes_played }}</td>
+                                        <td>{{ $ex->field_goals }}</td>
+                                        <td>{{ $ex->field_goals_attempted }}</td>
+                                        <td>{{ $ex->{'3pt'} }}</td>
+                                        <td>{{ $ex->{'3pt_attempted'} }}</td>
+                                        <td>{{ $ex->{'2pt'} }}</td>
+                                        <td>{{ $ex->{'2pt_attempted'} }}</td>
+                                        <td>{{ $ex->free_throws }}</td>
+                                        <td>{{ $ex->free_throws_attempted }}</td>
+                                        <td>{{ $ex->offensive_rebounds }}</td>
+                                        <td>{{ $ex->defensive_rebounds }}</td>
+                                        <td>{{ $ex->assists }}</td>
+                                        <td>{{ $ex->steals }}</td>
+                                        <td>{{ $ex->blocks }}</td>
+                                        <td>{{ $ex->turn_overs }}</td>
+                                        <td>{{ $ex->personal_fouls }}</td>
+                                        <td>{{ $ex->{'2pt'} + $ex->{'3pt'} + $ex->free_throws }}</td>
+                                        <td>{{ ($ex->field_goals * 100) / $ex->field_goals_attempted }}</td>
+                                        <td>{{ ($ex->{'3pt'} != 0 ) ? ($ex->{'3pt'} * 100) / $ex->{'3pt_attempted'} : 0 }}</td>
+                                        <td>{{ ($ex->{'2pt'} != 0 ) ? ($ex->{'2pt'} * 100) / $ex->{'2pt_attempted'} : 0 }}</td>
+                                        <td>{{ ($ex->free_throws != 0) ? ($ex->free_throws * 100) / $ex->free_throws_attempted : 0 }}</td>
+                                        <td>{{ $ex->defensive_rebounds + $ex->offensive_rebound }}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -101,3 +94,67 @@
         </div>
     </div>
 @endsection
+
+@push('modals')
+<!-- The Modal -->
+<div class="modal" id="exportModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Export Options</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+       <form>
+           <div class="form-group">
+            <label>Team</label>
+            <select class="form-control" name="team">
+                <option value="null" selected>All</option>
+                @foreach($teams as $team)
+                <option value="{{$team->name}}">{{ $team->name }}</option>
+                @endforeach
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Player</label>
+            <select class="form-control" name="player">
+                <option value="null" selected>All</option>
+                @foreach($rosters as $ros)
+                <option value="{{$ros->name}}">{{ $ros->name }}</option>
+                @endforeach              
+            </select>
+          </div>
+           <div class="form-group">
+            <label>Position</label>
+            <select class="form-control" name="pos">
+                <option value="null" selected>All</option>
+                @foreach($pos as $p)
+                <option value="{{$p->pos}}">{{ $p->pos }}</option>
+                @endforeach
+            </select>
+          </div>
+          <div class="form-group">
+            <label>File type</label>
+            <select class="form-control" name="type">
+                <option value="json">json</option>
+                <option value="xml">xml</option>
+                <option value="csv">csv</option>
+            </select>
+            <button type="submit" class="btn btn-danger">Export</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+@endpush

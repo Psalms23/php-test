@@ -25,12 +25,6 @@ class Roster extends Model
     	'college'
     ];
 
-    protected $appends = ['stats'];
-
-    public function getStatsAttribute(){
-        return PlayerTotals::where('player_id', $this->id)->first();
-    }
-
     public function team(){
     	return $this->belongsTo('App\Models\Team', 'team_code', 'code');
     }
