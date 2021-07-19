@@ -144,7 +144,7 @@
                 <option value="xml">xml</option>
                 <option value="csv">csv</option>
             </select>
-            <button type="submit" class="btn btn-danger">Export</button>
+            <button type="submit" class="btn btn-primary">Export</button>
           </div>
         </form>
       </div>
