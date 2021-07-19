@@ -15,7 +15,7 @@
             <li class="{{ $elementActive == 'tables' ? 'active' : '' }}">
                 <a href="{{ route('page.index', 'tables') }}">
                     <i class="nc-icon nc-tile-56"></i>
-                    <p>{{ __('Table List') }}</p>
+                    <p>{{ __('Export Queries') }}</p>
                 </a>
             </li>
         </ul>

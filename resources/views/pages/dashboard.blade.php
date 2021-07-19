@@ -136,7 +136,7 @@
                                             {{ $team->code }}
                                         </td>
                                         <td>
-                                            {{ $team->name }}
+                                            <a href="#">{{ $team->name }}</a>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -225,12 +225,3 @@
         </div>
     </div>
 @endsection
-
-@push('scripts')
-    <script>
-        $(document).ready(function() {
-            // Javascript method's body can be found in assets/assets-for-demo/js/demo.js
-            demo.initChartsPages();
-        });
-    </script>
-@endpush

@@ -25,7 +25,7 @@ class PageController extends Controller
      * @param string $page
      * @return \Illuminate\View\View
      */
-    public function index(string $page)
+    public function index(string $page, Request $request)
     {   
 
         $teams = Team::with('roster')->get();

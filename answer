@@ -8,3 +8,7 @@
 8. player_totals table primary key and foreign key to roster table are the same. This can create a confusion for some devs if they didn't read and test the whole diagram of the database.
 9. The player_totals table needs a datetime field. This will determine the game date of the player's stats.
 10. Put catch exception. Separating Error-Handling Code from "Regular" Code. Exceptions provide the means to separate the details of what to do when something out of the ordinary happens from the main logic of a program. In traditional programming, error detection, reporting, and handling often lead to confusing spaghetti code.
+
+*export stats by team
+*stats by Position
+*stats per Player
