@@ -1,0 +1,10 @@
+1. Lacking software design pattern. Applying design patterns to your design and development will improve your object reuse and allow for easier program changes.
+2. Use Data Migration tools/Plug-ins for fast migration for new tables,fields and altering of data types.
+3. You can use Laravel's ORM to automate the transfer of data stored in relational database tables into objects that are more commonly used.
+4. User Friendly UI. 
+5. The player_totals table needs a datetime field. This will determine the game date of the player's stats.
+6. We can use Database Seeder when providing initial set of data. So it can be easier to have a fresh set up of the current app for the new developers or if we need to install the app on a new device/server.
+7. Database table naming. On the standard practices based on my experience, it is best to name the table on a plural form(teams) and the foreign key to singular form(team_id). This is also a standard for some MVC frameworks so you dont have to manually define the table name inside the model.
+8. Primary key naming(Tables team and player totals). Primary keys can just be named ID to make it simple and standard for all tables just to avoid confusion for the developers and database manager.
+9. player_totals table primary key and foreign key to roster table are the same. This can create a confusion for some devs if they didn't read and test the whole diagram of the database.
+10. This might not be counted as an answer but some of my answers can be found on different Php frameworks. Frameworks are good to make the development faster and easy to maintain plus they always add new features to help us code in easier and faster. You can always apply software design patterns and other coding practices even without using a framework. But we can never deny that some frameworks can help us develop, maintain and a improve our apps to be the best.  
